@@ -58,7 +58,7 @@ via the builder if you wish
 </details>
 
 <details>
-  <summary>Building your cache</summary>
+  <summary>Building your cache </summary>
 
 ```java
 public class Test {
