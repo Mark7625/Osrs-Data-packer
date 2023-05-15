@@ -40,6 +40,12 @@ dependencies {
 
 }
 
+tasks.withType<Jar>() {
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+}
+
 tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
