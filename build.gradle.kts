@@ -3,7 +3,7 @@ version = 1.0
 
 plugins {
     kotlin("jvm") version "1.8.20"
-    `maven-publish`
+    id("maven-publish")
 }
 
 repositories {
@@ -50,8 +50,18 @@ tasks {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Mark7625/Osrs-Data-packer")
+            credentials {
+                username = System.getenv("GITHUB_ACTION")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("gpr") {
             groupId = "com.mark"
             artifactId = "osrs-cache-packer"
             version = "1.0"
