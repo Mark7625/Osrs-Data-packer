@@ -68,12 +68,13 @@ publishing {
         }
     }
     publications {
-        create<MavenPublication>("gpr") {
+        register("maven", MavenPublication::class) {
             groupId = "com.mark"
             artifactId = "osrs-cache-packer"
             version = "1.0"
 
             from(components["java"])
         }
+
     }
 }
