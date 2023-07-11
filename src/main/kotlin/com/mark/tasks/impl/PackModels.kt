@@ -18,7 +18,7 @@ class PackModels(private val modelDirectory : File) : CacheTask() {
         if (modelSize != 0) {
             getFiles(modelDirectory,"gz","dat").forEach {
                 val id = it.nameWithoutExtension.toInt()
-                val buffer = if (it.extension == ".gz") decompressGzipToBytes(it.toPath()) else Files.readAllBytes(it.toPath())
+                val buffer = if (it.extension == "gz") decompressGzipToBytes(it.toPath()) else Files.readAllBytes(it.toPath())
                 library.put(7, id, buffer)
                 progressModels.step()
             }
